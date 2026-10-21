@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fire Emergency</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .fire-details {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* EMERGENCY BUTTON */
+
+        .action-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .emergency {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .location {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+            margin-top: 25px;
+        }
+
+        /* FIRE SAFETY BOX */
+
+        .safety-box {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .avoid-box {
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="fire-details">
+
+        <h1>🔥 Fire Emergency</h1>
+
+        <p class="subtitle">
+            Follow these safety measures during a fire emergency
+        </p>
+
+
+        <!-- ================= CURRENT PRECAUTIONS ================= -->
+
+        <h3>⚠️ Immediate Precautions</h3>
+
+        <ul>
+
+            <li>
+                Stay calm and alert others nearby about the fire.
+            </li>
+
+            <li>
+                Move away from the fire and smoke as quickly as possible.
+            </li>
+
+            <li>
+                Use the nearest safe exit.
+            </li>
+
+            <li>
+                Stay low if there is heavy smoke.
+            </li>
+
+            <li>
+                Never use an elevator during a building fire.
+            </li>
+
+            <li>
+                Follow the building's fire evacuation plan.
+            </li>
+
+        </ul>
+
+
+        <!-- ================= WHAT TO DO ================= -->
+
+        <h3>🛡️ What to Do</h3>
+
+        <div class="safety-box">
+
+            <ul>
+
+                <li>
+                    Raise the alarm and alert people nearby.
+                </li>
+
+                <li>
+                    Call emergency services immediately.
+                </li>
+
+                <li>
+                    Leave the building using a safe exit.
+                </li>
+
+                <li>
+                    Close doors behind you if you can do so safely,
+                    without locking them.
+                </li>
+
+                <li>
+                    Once outside, move to a safe assembly point.
+                </li>
+
+                <li>
+                    Do not re-enter the building until authorities
+                    declare it safe.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ================= WHAT TO AVOID ================= -->
+
+        <h3>🚫 What to Avoid</h3>
+
+        <div class="avoid-box">
+
+            <ul>
+
+                <li>
+                    Do not go back inside for personal belongings.
+                </li>
+
+                <li>
+                    Do not use elevators.
+                </li>
+
+                <li>
+                    Do not enter rooms filled with smoke.
+                </li>
+
+                <li>
+                    Do not attempt to fight a large or rapidly spreading
+                    fire yourself.
+                </li>
+
+                <li>
+                    Do not block emergency exits.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ================= CLOTHING FIRE ================= -->
+
+        <h3>👕 If Clothes Catch Fire</h3>
+
+        <ul>
+
+            <li>
+                Stop moving.
+            </li>
+
+            <li>
+                Drop to the ground.
+            </li>
+
+            <li>
+                Roll to help put out the flames.
+            </li>
+
+            <li>
+                Ask someone nearby to call emergency services.
+            </li>
+
+        </ul>
+
+
+        <!-- ================= SMOKE ================= -->
+
+        <h3>🌫️ If There Is Heavy Smoke</h3>
+
+        <ul>
+
+            <li>
+                Stay as low as possible.
+            </li>
+
+            <li>
+                Move toward a safe exit.
+            </li>
+
+            <li>
+                Avoid breathing unnecessary smoke.
+            </li>
+
+            <li>
+                If you cannot safely escape, stay in a protected location
+                and signal for help if possible.
+            </li>
+
+        </ul>
+
+
+        <!-- ================= EMERGENCY CONTACT ================= -->
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button
+            class="action-button emergency"
+            onclick="callEmergency()">
+
+            🚨 Call Emergency Services - 7356393679
+
+        </button>
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <h3>📍 Current Location</h3>
+
+        <p>
+            Share your location with emergency responders or a trusted
+            person if it is safe to do so.
+        </p>
+
+        <button
+            class="action-button location"
+            onclick="shareLocation()">
+
+            📍 Share My Current Location
+
+        </button>
+
+
+        <!-- ================= BACK ================= -->
+
+        <button
+            class="action-button back"
+            onclick="goBack()">
+
+            ← Back
+
+        </button>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function callEmergency() {
+
+            window.location.href = "tel:7356393679";
+
+        }
+
+
+        function shareLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location sharing is not supported by this browser."
+                );
+
+                return;
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    var latitude =
+                        position.coords.latitude;
+
+                    var longitude =
+                        position.coords.longitude;
+
+
+                    var locationURL =
+                        "https://www.google.com/maps?q="
+                        + latitude
+                        + ","
+                        + longitude;
+
+
+                    if (navigator.share) {
+
+                        navigator.share({
+
+                            title: "Fire Emergency Location",
+
+                            text:
+                                "My current fire emergency location:",
+
+                            url: locationURL
+
+                        });
+
+                    }
+
+                    else {
+
+                        alert(
+                            "Current Location:\n\n"
+                            + locationURL
+                        );
+
+                    }
+
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to access your location. " +
+                        "Please allow location permission."
+                    );
+
+                }
+
+            );
+
+        }
+
+
+        function goBack() {
+
+            window.history.back();
+
+        }
+
+    </script>
+
+</body>
+
+</html>

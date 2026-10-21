@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crime Emergencies</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* CRIME BOXES */
+
+        .crime-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+
+            gap: 18px;
+        }
+
+        .crime-box {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px 15px;
+            cursor: pointer;
+            font-size: 16px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+            transition: 0.2s;
+        }
+
+        .crime-box:hover {
+            transform: translateY(-4px);
+        }
+
+        .crime-icon {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* DETAILS */
+
+        .crime-details {
+            display: none;
+
+            max-width: 800px;
+            margin: 30px auto;
+
+            background: white;
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .crime-details.show {
+            display: block;
+        }
+
+        .crime-details h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .crime-details h3 {
+            margin-top: 25px;
+        }
+
+        .crime-details li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* BUTTONS */
+
+        .action-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+
+            padding: 14px;
+            margin-top: 10px;
+
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .emergency {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .police {
+            background: #1565c0;
+            color: white;
+        }
+
+        .location {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .crime-container {
+                grid-template-columns: 1fr;
+            }
+
+            .crime-details {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚨 Crime Emergencies</h1>
+
+    <p class="subtitle">
+        Select the type of crime to view safety information
+    </p>
+
+
+    <!-- =====================================================
+         CRIME CATEGORY BOXES
+    ====================================================== -->
+
+    <div class="crime-container">
+
+        <button class="crime-box" onclick="showCrime('theft')">
+            <span class="crime-icon">🏠</span>
+            <strong>Theft / Robbery</strong>
+            <br>
+            Safety information
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('assault')">
+            <span class="crime-icon">👊</span>
+            <strong>Assault</strong>
+            <br>
+            Immediate safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('traffic')">
+            <span class="crime-icon">🚗</span>
+            <strong>Road / Traffic Crime</strong>
+            <br>
+            Road emergency guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('missing')">
+            <span class="crime-icon">👤</span>
+            <strong>Kidnapping / Missing Person</strong>
+            <br>
+            Emergency guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('domestic')">
+            <span class="crime-icon">🏠</span>
+            <strong>Domestic Violence</strong>
+            <br>
+            Safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('cyber')">
+            <span class="crime-icon">📱</span>
+            <strong>Cybercrime</strong>
+            <br>
+            Online safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('stalking')">
+            <span class="crime-icon">🚫</span>
+            <strong>Harassment / Stalking</strong>
+            <br>
+            Personal safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('threat')">
+            <span class="crime-icon">⚠️</span>
+            <strong>Threat / Dangerous Situation</strong>
+            <br>
+            Emergency safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('arson')">
+            <span class="crime-icon">🔥</span>
+            <strong>Arson / Property Damage</strong>
+            <br>
+            Fire and safety guidance
+        </button>
+
+
+        <button class="crime-box" onclick="showCrime('suspicious')">
+            <span class="crime-icon">👀</span>
+            <strong>Suspicious Activity</strong>
+            <br>
+            Safety guidance
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         THEFT
+    ====================================================== -->
+
+    <div id="theft" class="crime-details">
+
+        <h2>🏠 Theft / Robbery</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move to a safe location if a robbery is happening.</li>
+            <li>Do not confront or chase the person.</li>
+            <li>Keep important belongings secure.</li>
+            <li>Remember useful details only if it is safe to do so.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Contact the police as soon as you are safe.</li>
+            <li>Do not disturb possible evidence unnecessarily.</li>
+            <li>Tell a trusted adult or responsible person.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         ASSAULT
+    ====================================================== -->
+
+    <div id="assault" class="crime-details">
+
+        <h2>👊 Assault</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move away from the dangerous situation if possible.</li>
+            <li>Go toward a safe, populated place.</li>
+            <li>Do not put yourself at additional risk by confronting someone.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Seek medical attention if you are injured.</li>
+            <li>Contact emergency services.</li>
+            <li>Tell a trusted adult or responsible person.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TRAFFIC CRIME
+    ====================================================== -->
+
+    <div id="traffic" class="crime-details">
+
+        <h2>🚗 Road / Traffic Crime</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move to a safe location away from moving traffic.</li>
+            <li>Do not confront an aggressive driver.</li>
+            <li>Follow road safety rules.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Contact emergency services for immediate danger.</li>
+            <li>Give authorities the location of the incident.</li>
+            <li>Seek medical help if someone is injured.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         MISSING PERSON
+    ====================================================== -->
+
+    <div id="missing" class="crime-details">
+
+        <h2>👤 Kidnapping / Missing Person</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Contact police immediately when someone is missing or believed to be in danger.</li>
+            <li>Do not attempt to investigate a dangerous situation yourself.</li>
+            <li>Keep relevant information available for authorities.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Report the situation to the police.</li>
+            <li>Provide authorities with accurate information.</li>
+            <li>Share the last known location if available.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         DOMESTIC VIOLENCE
+    ====================================================== -->
+
+    <div id="domestic" class="crime-details">
+
+        <h2>🏠 Domestic Violence</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move to a safer place if you feel threatened.</li>
+            <li>Avoid confronting a person who may become violent.</li>
+            <li>Keep contact with a trusted person when possible.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Contact emergency services if there is immediate danger.</li>
+            <li>Reach out to a trusted adult or support person.</li>
+            <li>Seek professional help and protection.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         CYBERCRIME
+    ====================================================== -->
+
+    <div id="cyber" class="crime-details">
+
+        <h2>📱 Cybercrime</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Do not share passwords or verification codes.</li>
+            <li>Avoid clicking suspicious links.</li>
+            <li>Use strong passwords and account security features.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Stop communicating with the suspicious account when appropriate.</li>
+            <li>Save relevant messages or evidence.</li>
+            <li>Report the incident through appropriate official cybercrime channels.</li>
+            <li>Tell a trusted adult if you need help.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         STALKING
+    ====================================================== -->
+
+    <div id="stalking" class="crime-details">
+
+        <h2>🚫 Harassment / Stalking</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay around trusted people when you feel unsafe.</li>
+            <li>Avoid meeting a threatening person alone.</li>
+            <li>Use privacy and safety settings on online accounts.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Move to a safe location.</li>
+            <li>Tell a trusted adult or responsible person.</li>
+            <li>Report serious or immediate threats to police.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         THREAT
+    ====================================================== -->
+
+    <div id="threat" class="crime-details">
+
+        <h2>⚠️ Threat / Dangerous Situation</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move away from the dangerous situation if possible.</li>
+            <li>Go to a safe public location.</li>
+            <li>Do not confront the person making the threat.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Contact emergency services if there is immediate danger.</li>
+            <li>Tell a trusted adult or responsible person.</li>
+            <li>Follow instructions from authorities.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         ARSON
+    ====================================================== -->
+
+    <div id="arson" class="crime-details">
+
+        <h2>🔥 Arson / Property Damage</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move away from fire or dangerous property damage.</li>
+            <li>Do not enter a damaged building.</li>
+            <li>Stay away from smoke and electrical hazards.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Move to a safe location.</li>
+            <li>Call emergency services.</li>
+            <li>Follow instructions from fire and police authorities.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUSPICIOUS ACTIVITY
+    ====================================================== -->
+
+    <div id="suspicious" class="crime-details">
+
+        <h2>👀 Suspicious Activity</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Keep a safe distance from suspicious activity.</li>
+            <li>Do not investigate or confront someone yourself.</li>
+            <li>Move to a safe location if you feel threatened.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Contact authorities if there is an immediate safety concern.</li>
+            <li>Provide the location and relevant information to authorities.</li>
+            <li>Follow instructions from emergency personnel.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button emergency"
+                onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button police"
+                onclick="callPolice()">
+            👮 Call Police - 7356393679
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back"
+                onclick="goBack()">
+            ← Back to Crime Categories
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        function showCrime(crimeId) {
+
+            // Hide every detail section
+            var details =
+                document.querySelectorAll(".crime-details");
+
+            details.forEach(function(section) {
+                section.classList.remove("show");
+            });
+
+
+            // Find selected crime
+            var selected =
+                document.getElementById(crimeId);
+
+
+            // Show selected crime
+            if (selected) {
+
+                selected.classList.add("show");
+
+                selected.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        }
+
+
+        function goBack() {
+
+            var details =
+                document.querySelectorAll(".crime-details");
+
+            details.forEach(function(section) {
+                section.classList.remove("show");
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        function callEmergency() {
+
+            window.location.href = "tel:7356393679";
+        }
+
+
+        function callPolice() {
+
+            window.location.href = "tel:7356393679";
+        }
+
+
+        function shareLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location sharing is not supported by this browser."
+                );
+
+                return;
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    var latitude =
+                        position.coords.latitude;
+
+                    var longitude =
+                        position.coords.longitude;
+
+
+                    var locationURL =
+                        "https://www.google.com/maps?q="
+                        + latitude
+                        + ","
+                        + longitude;
+
+
+                    if (navigator.share) {
+
+                        navigator.share({
+
+                            title: "Emergency Location",
+
+                            text:
+                                "My current emergency location:",
+
+                            url: locationURL
+
+                        });
+
+                    } else {
+
+                        alert(
+                            "Your location link:\n\n"
+                            + locationURL
+                        );
+                    }
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to get your location. " +
+                        "Please allow location permission."
+                    );
+                }
+            );
+        }
+
+    </script>
+
+</body>
+</html>

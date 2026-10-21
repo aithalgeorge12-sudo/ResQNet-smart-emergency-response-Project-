@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Emergency Response - Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d62828;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            margin: 7px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        textarea {
+            height: 70px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #d62828;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a91f1f;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🆘 Smart Emergency Response</h1>
+    <h2>Registration</h2>
+
+    <form onsubmit="registerUser(event)">
+
+        <input type="text"
+               id="name"
+  		name="name"
+               placeholder="Full Name"
+               required>
+
+        <input type="number"
+               id="age"
+		name="age"
+               placeholder="Age"
+               required>
+
+        <input type="tel"
+               id="phone"
+		name="phone"
+               placeholder="Phone Number"
+               required>
+
+        <input type="email"
+               id="email"
+		name="email"
+
+               placeholder="Email Address"
+               required>
+
+        <textarea id="address"
+		name="address"
+
+                  placeholder="Full Address"
+                  required></textarea>
+
+        <select id="bloodGroup"name="bloodGroup"
+ required>
+            <option value="">Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+        </select>
+
+        <input type="tel"
+               id="emergencyContact"name="emergencyContacts"
+
+               placeholder="Emergency Contact Number"
+               required>
+
+        <textarea id="diseases"name="diseases"
+
+                  placeholder="Existing Diseases / Medical Conditions"></textarea>
+
+        <textarea id="allergies"name="allergies"
+
+                  placeholder="Allergies"></textarea>
+
+        <textarea id="medications"name="medications"
+
+                  placeholder="Current Medications"></textarea>
+	<textarea id="consulting doctor"name="consultingDoctor"
+
+                  placeholder="doctor"></textarea>
+
+
+        <button type="submit">
+            REGISTER
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+function registerUser(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+
+    alert("Registration Successful! Welcome " + name);
+}
+</script>
+
+</body>
+</html>

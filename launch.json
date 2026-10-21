@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "request": "launch",
+            "name": "Start ResQNet Server",
+            "command": "cmd /c \"cd /d C:\\Users\\aitha\\Desktop\\project && start_resqnet.bat\""
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open ResQNet in Browser",
+            "url": "http://localhost:8080/ResQNet/",
+            "webRoot": "${workspaceFolder}/ResQNet/src/main/webapp"
+        }
+    ]
+}

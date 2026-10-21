@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Natural Disasters</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* DISASTER BOXES */
+
+        .disaster-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .disaster-box {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition: 0.2s;
+        }
+
+        .disaster-box:hover {
+            transform: translateY(-4px);
+        }
+
+        .disaster-icon {
+            display: block;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* DETAILS */
+
+        .disaster-details {
+            display: none;
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .disaster-details.show {
+            display: block;
+        }
+
+        .disaster-details h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .disaster-details h3 {
+            margin-top: 25px;
+        }
+
+        .disaster-details li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* BUTTONS */
+
+        .action-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .emergency {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .location {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .disaster-container {
+                grid-template-columns: 1fr;
+            }
+
+            .disaster-details {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌪️ Natural Disasters</h1>
+
+    <p class="subtitle">
+        Select a disaster to view precautions and safety information
+    </p>
+
+
+    <!-- ================= DISASTER BOXES ================= -->
+
+    <div class="disaster-container">
+
+        <button class="disaster-box" onclick="showDisaster('flood')">
+            <span class="disaster-icon">🌊</span>
+            Flood
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('earthquake')">
+            <span class="disaster-icon">🌍</span>
+            Earthquake
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('cyclone')">
+            <span class="disaster-icon">🌀</span>
+            Cyclone
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('tsunami')">
+            <span class="disaster-icon">🌊</span>
+            Tsunami
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('landslide')">
+            <span class="disaster-icon">⛰️</span>
+            Landslide
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('lightning')">
+            <span class="disaster-icon">⚡</span>
+            Lightning / Thunderstorm
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('wildfire')">
+            <span class="disaster-icon">🔥</span>
+            Forest Fire / Wildfire
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('heat')">
+            <span class="disaster-icon">☀️</span>
+            Extreme Heat
+        </button>
+
+        <button class="disaster-box" onclick="showDisaster('storm')">
+            <span class="disaster-icon">🌧️</span>
+            Severe Storm
+        </button>
+
+    </div>
+
+
+    <!-- ================= FLOOD ================= -->
+
+    <div id="flood" class="disaster-details">
+
+        <h2>🌊 Flood</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move to higher ground if water levels are rising.</li>
+            <li>Avoid walking or driving through floodwater.</li>
+            <li>Stay away from fallen electrical wires.</li>
+            <li>Keep emergency supplies ready.</li>
+            <li>Follow official evacuation instructions.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Stay in a safe elevated location.</li>
+            <li>Follow official emergency announcements.</li>
+            <li>Do not return until authorities say it is safe.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= EARTHQUAKE ================= -->
+
+    <div id="earthquake" class="disaster-details">
+
+        <h2>🌍 Earthquake</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Drop, Cover, and Hold On during shaking.</li>
+            <li>Stay away from windows and objects that may fall.</li>
+            <li>If outdoors, move away from buildings and power lines.</li>
+            <li>Be prepared for aftershocks.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Protect yourself during the shaking.</li>
+            <li>Move carefully to a safe area after shaking stops.</li>
+            <li>Follow instructions from emergency authorities.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= CYCLONE ================= -->
+
+    <div id="cyclone" class="disaster-details">
+
+        <h2>🌀 Cyclone</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay indoors and away from windows.</li>
+            <li>Follow official weather warnings.</li>
+            <li>Keep water and essential supplies ready.</li>
+            <li>Follow evacuation orders when issued.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Stay indoors until the danger has passed.</li>
+            <li>Stay away from damaged buildings and fallen wires.</li>
+            <li>Follow official instructions.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= TSUNAMI ================= -->
+
+    <div id="tsunami" class="disaster-details">
+
+        <h2>🌊 Tsunami</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move inland or to higher ground after an official warning.</li>
+            <li>Stay away from beaches and coastal areas.</li>
+            <li>Follow evacuation routes.</li>
+            <li>Do not return until authorities give the all-clear.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Follow official tsunami warnings.</li>
+            <li>Move to a safe elevated location.</li>
+            <li>Stay away from floodwater and damaged areas.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= LANDSLIDE ================= -->
+
+    <div id="landslide" class="disaster-details">
+
+        <h2>⛰️ Landslide</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay away from unstable slopes.</li>
+            <li>Avoid areas where the ground is cracking or moving.</li>
+            <li>Stay away from landslide debris.</li>
+            <li>Follow evacuation instructions.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Move to a safe and stable area.</li>
+            <li>Do not enter affected areas unless authorities say it is safe.</li>
+            <li>Report dangerous conditions to authorities.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= LIGHTNING ================= -->
+
+    <div id="lightning" class="disaster-details">
+
+        <h2>⚡ Lightning / Thunderstorm</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Go indoors or into a hard-topped vehicle.</li>
+            <li>Avoid isolated trees and open areas.</li>
+            <li>Stay away from water during thunderstorms.</li>
+            <li>Keep away from windows.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Remain indoors until the storm passes.</li>
+            <li>Avoid unnecessary outdoor travel.</li>
+            <li>Seek emergency help if someone is seriously injured.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= WILDFIRE ================= -->
+
+    <div id="wildfire" class="disaster-details">
+
+        <h2>🔥 Forest Fire / Wildfire</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay away from fire and heavy smoke.</li>
+            <li>Follow evacuation instructions.</li>
+            <li>Do not enter restricted fire-affected areas.</li>
+            <li>Keep windows and doors closed when smoke is heavy.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Move away from fire and smoke.</li>
+            <li>Follow official evacuation routes.</li>
+            <li>Contact emergency services if you are in immediate danger.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= EXTREME HEAT ================= -->
+
+    <div id="heat" class="disaster-details">
+
+        <h2>☀️ Extreme Heat</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay in a cool or shaded place.</li>
+            <li>Drink fluids regularly.</li>
+            <li>Avoid strenuous activity during the hottest part of the day.</li>
+            <li>Follow local heat warnings.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Move to a cooler place if you feel unwell.</li>
+            <li>Seek medical help for serious heat-related symptoms.</li>
+            <li>Keep yourself hydrated.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= SEVERE STORM ================= -->
+
+    <div id="storm" class="disaster-details">
+
+        <h2>🌧️ Severe Storm</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Stay indoors and away from windows.</li>
+            <li>Avoid flooded roads.</li>
+            <li>Stay away from fallen power lines.</li>
+            <li>Follow official weather warnings.</li>
+        </ul>
+
+        <h3>🛡️ What to Do</h3>
+
+        <ul>
+            <li>Stay indoors until the storm passes.</li>
+            <li>Move to a safer place if your current location becomes dangerous.</li>
+            <li>Contact emergency services for serious emergencies.</li>
+        </ul>
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button class="action-button emergency" onclick="callEmergency()">
+            🚨 Call Emergency Services - 7356393679
+        </button>
+
+        <button class="action-button location" onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back" onclick="goBack()">
+            ← Back to Natural Disasters
+        </button>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function showDisaster(disasterId) {
+
+            var details = document.querySelectorAll(".disaster-details");
+
+            details.forEach(function(detail) {
+                detail.classList.remove("show");
+            });
+
+            var selected = document.getElementById(disasterId);
+
+            if (selected) {
+                selected.classList.add("show");
+
+                selected.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        }
+
+
+        function goBack() {
+
+            var details = document.querySelectorAll(".disaster-details");
+
+            details.forEach(function(detail) {
+                detail.classList.remove("show");
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        function callEmergency() {
+
+            window.location.href = "tel:7356393679";
+
+        }
+
+
+        function shareLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert("Location sharing is not supported by this browser.");
+
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var locationURL =
+                        "https://www.google.com/maps?q="
+                        + latitude + "," + longitude;
+
+
+                    if (navigator.share) {
+
+                        navigator.share({
+                            title: "Emergency Location",
+                            text: "My current emergency location:",
+                            url: locationURL
+                        });
+
+                    } else {
+
+                        alert(
+                            "Your location link:\n\n"
+                            + locationURL
+                        );
+
+                    }
+
+                },
+
+                function() {
+
+                    alert(
+                        "Unable to access your location. " +
+                        "Please allow location permission."
+                    );
+
+                }
+            );
+        }
+
+    </script>
+
+</body>
+</html>

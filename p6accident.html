@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accident Emergency</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .accident-details {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        /* PHOTO BUTTON */
+
+        .photo-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            background: #1976d2;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .photo-button:hover {
+            opacity: 0.9;
+        }
+
+        /* PHOTO PREVIEW */
+
+        .photo-preview {
+            display: none;
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+        }
+
+        /* TEXT BOX */
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        /* ACTION BUTTONS */
+
+        .action-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .emergency {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .location {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+            margin-top: 25px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="accident-details">
+
+        <h1>🚗 Accident Emergency</h1>
+
+        <p class="subtitle">
+            Get immediate help and report important accident information
+        </p>
+
+
+        <!-- ================= PRECAUTIONS ================= -->
+
+        <h3>⚠️ Immediate Precautions</h3>
+
+        <ul>
+            <li>Move to a safe place if there is continuing danger.</li>
+
+            <li>
+                Do not move an injured person unnecessarily,
+                especially after a serious crash.
+            </li>
+
+            <li>
+                Do not give food or drink to a seriously injured person.
+            </li>
+
+            <li>
+                Keep the area around the injured person clear.
+            </li>
+
+            <li>
+                Call emergency services as soon as possible.
+            </li>
+
+            <li>
+                Follow instructions from emergency responders.
+            </li>
+        </ul>
+
+
+        <!-- ================= ACCIDENT PHOTO ================= -->
+
+        <h3>📸 Accident Scene</h3>
+
+        <p>
+            If it is safe to do so, take a photo of the accident scene
+            for emergency responders.
+        </p>
+
+
+        <label for="scenePhoto" class="photo-button">
+            📸 Take Photo of Accident Scene
+        </label>
+
+        <input
+            type="file"
+            id="scenePhoto"
+            accept="image/*"
+            capture="environment"
+            onchange="previewPhoto(this, 'scenePreview')"
+            hidden
+        >
+
+        <img
+            id="scenePreview"
+            class="photo-preview"
+            alt="Accident scene preview"
+        >
+
+
+        <!-- ================= PATIENT PHOTO ================= -->
+
+        <h3>📷 Patient Condition</h3>
+
+        <p>
+            If appropriate and safe, a photo can be recorded
+            to help responders understand the situation.
+        </p>
+
+        <label for="patientPhoto" class="photo-button">
+            📷 Take Patient Photo
+        </label>
+
+        <input
+            type="file"
+            id="patientPhoto"
+            accept="image/*"
+            capture="environment"
+            onchange="previewPhoto(this, 'patientPreview')"
+            hidden
+        >
+
+        <img
+            id="patientPreview"
+            class="photo-preview"
+            alt="Patient photo preview"
+        >
+
+
+        <!-- ================= DESCRIPTION ================= -->
+
+        <h3>📝 Accident Description</h3>
+
+        <textarea
+            id="accidentDescription"
+            rows="5"
+            placeholder="Describe what happened, number of people involved, visible hazards, etc.">
+        </textarea>
+
+
+        <!-- ================= EMERGENCY ================= -->
+
+        <h3>📞 Emergency Contact</h3>
+
+        <button
+            class="action-button emergency"
+            onclick="callEmergency()">
+
+            🚨 Call Emergency Services - 7356393679
+
+        </button>
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <h3>📍 Current Location</h3>
+
+        <button
+            class="action-button location"
+            onclick="shareLocation()">
+
+            📍 Share My Current Location
+
+        </button>
+
+
+        <!-- ================= BACK ================= -->
+
+        <button
+            class="action-button back"
+            onclick="goBack()">
+
+            ← Back
+
+        </button>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* PHOTO PREVIEW */
+
+        function previewPhoto(input, previewId) {
+
+            var preview = document.getElementById(previewId);
+
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+
+                    preview.src = event.target.result;
+
+                    preview.style.display = "block";
+
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+        /* CALL EMERGENCY */
+
+        function callEmergency() {
+
+            window.location.href = "tel:7356393679";
+
+        }
+
+
+        /* SHARE LOCATION */
+
+        function shareLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location sharing is not supported by this browser."
+                );
+
+                return;
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    var latitude =
+                        position.coords.latitude;
+
+                    var longitude =
+                        position.coords.longitude;
+
+
+                    var locationURL =
+                        "https://www.google.com/maps?q="
+                        + latitude
+                        + ","
+                        + longitude;
+
+
+                    if (navigator.share) {
+
+                        navigator.share({
+
+                            title: "Accident Emergency Location",
+
+                            text: "My current accident emergency location:",
+
+                            url: locationURL
+
+                        });
+
+                    }
+
+                    else {
+
+                        alert(
+                            "Current Location:\n\n"
+                            + locationURL
+                        );
+
+                    }
+
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to access your location. " +
+                        "Please allow location permission."
+                    );
+
+                }
+
+            );
+
+        }
+
+
+        /* BACK BUTTON */
+
+        function goBack() {
+
+            window.history.back();
+
+        }
+
+    </script>
+
+</body>
+
+</html>

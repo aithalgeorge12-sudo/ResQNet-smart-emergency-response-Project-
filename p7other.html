@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Other Emergency</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .emergency-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+
+        .action-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .emergency {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .location {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .submit {
+            background: #1976d2;
+            color: white;
+        }
+
+        .back {
+            background: #555;
+            color: white;
+            margin-top: 25px;
+        }
+
+        .message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="emergency-container">
+
+        <h1>🚨 Other Emergency</h1>
+
+        <p class="subtitle">
+            Enter the type and details of the emergency
+        </p>
+
+
+        <!-- EMERGENCY TYPE -->
+
+        <label for="emergencyType">
+            🚨 Type of Emergency
+        </label>
+
+        <input
+            type="text"
+            id="emergencyType"
+            placeholder="Example: Gas leak, animal attack, building damage..."
+        >
+
+
+        <!-- EMERGENCY DETAILS -->
+
+        <label for="emergencyDetails">
+            📝 Emergency Details
+        </label>
+
+        <textarea
+            id="emergencyDetails"
+            placeholder="Describe what happened, where it happened, people involved, and any immediate danger..."
+        ></textarea>
+
+
+        <!-- SAVE DETAILS -->
+
+        <button
+            class="action-button submit"
+            onclick="saveEmergency()">
+
+            💾 Save Emergency Details
+
+        </button>
+
+
+        <div
+            id="message"
+            class="message">
+
+            Emergency details recorded on this page.
+
+        </div>
+
+
+        <!-- EMERGENCY CONTACT -->
+
+        <label>
+            📞 Emergency Contact
+        </label>
+
+        <button
+            class="action-button emergency"
+            onclick="callEmergency()">
+
+            🚨 Call Emergency Services - 7356393679
+
+        </button>
+
+
+        <!-- LOCATION -->
+
+        <label>
+            📍 Current Location
+        </label>
+
+        <button
+            class="action-button location"
+            onclick="shareLocation()">
+
+            📍 Share My Current Location
+
+        </button>
+
+
+        <!-- BACK -->
+
+        <button
+            class="action-button back"
+            onclick="goBack()">
+
+            ← Back
+
+        </button>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function saveEmergency() {
+
+            var type =
+                document.getElementById("emergencyType").value;
+
+            var details =
+                document.getElementById("emergencyDetails").value;
+
+
+            if (type.trim() === "" ||
+                details.trim() === "") {
+
+                alert(
+                    "Please enter the emergency type and details."
+                );
+
+                return;
+            }
+
+
+            document.getElementById("message").style.display =
+                "block";
+
+        }
+
+
+        function callEmergency() {
+
+            window.location.href = "tel:7356393679";
+
+        }
+
+
+        function shareLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location sharing is not supported by this browser."
+                );
+
+                return;
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    var latitude =
+                        position.coords.latitude;
+
+                    var longitude =
+                        position.coords.longitude;
+
+
+                    var locationURL =
+                        "https://www.google.com/maps?q="
+                        + latitude
+                        + ","
+                        + longitude;
+
+
+                    if (navigator.share) {
+
+                        navigator.share({
+
+                            title: "Other Emergency Location",
+
+                            text:
+                                "My current emergency location:",
+
+                            url: locationURL
+
+                        });
+
+                    }
+
+                    else {
+
+                        alert(
+                            "Current Location:\n\n"
+                            + locationURL
+                        );
+
+                    }
+
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to access your location. " +
+                        "Please allow location permission."
+                    );
+
+                }
+
+            );
+
+        }
+
+
+        function goBack() {
+
+            window.history.back();
+
+        }
+
+    </script>
+
+</body>
+
+</html>

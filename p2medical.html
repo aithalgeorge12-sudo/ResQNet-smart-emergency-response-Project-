@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Emergencies</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Emergency Boxes */
+        .emergency-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .emergency-box {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .emergency-box:hover {
+            transform: translateY(-4px);
+        }
+
+        .emergency-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Details */
+        .emergency-details {
+            display: none;
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .emergency-details.active {
+            display: block;
+        }
+
+        .emergency-details h2 {
+            text-align: center;
+        }
+
+        .emergency-details h3 {
+            margin-top: 25px;
+        }
+
+        .emergency-details li {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .call-button {
+            background: #e53935;
+            color: white;
+        }
+
+        .hospital-button {
+            background: #1976d2;
+            color: white;
+        }
+
+        .location-button {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .back-button {
+            background: #555;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🏥 Medical Emergencies</h1>
+    <p class="subtitle">Select the type of medical emergency</p>
+
+
+    <!-- ============================= -->
+    <!-- MEDICAL EMERGENCY BOXES -->
+    <!-- ============================= -->
+
+    <div class="emergency-container">
+
+        <button class="emergency-box" onclick="showEmergency('snake')">
+            <span class="emergency-icon">🐍</span>
+            <strong>Snake Bite</strong>
+            <br>
+            First Aid & Safety
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('heart')">
+            <span class="emergency-icon">❤️</span>
+            <strong>Heart Attack</strong>
+            <br>
+            Immediate Help
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('unconscious')">
+            <span class="emergency-icon">😵</span>
+            <strong>Unconsciousness</strong>
+            <br>
+            Immediate Help
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('breathing')">
+            <span class="emergency-icon">🫁</span>
+            <strong>Breathing Difficulty</strong>
+            <br>
+            Emergency Care
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('bleeding')">
+            <span class="emergency-icon">🩸</span>
+            <strong>Severe Bleeding</strong>
+            <br>
+            First Aid
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('burns')">
+            <span class="emergency-icon">🔥</span>
+            <strong>Severe Burns</strong>
+            <br>
+            Immediate Care
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('stroke')">
+            <span class="emergency-icon">🧠</span>
+            <strong>Stroke</strong>
+            <br>
+            Emergency Care
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('seizure')">
+            <span class="emergency-icon">🫨</span>
+            <strong>Seizure</strong>
+            <br>
+            Safety & Help
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('poisoning')">
+            <span class="emergency-icon">☠️</span>
+            <strong>Poisoning</strong>
+            <br>
+            Emergency Help
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('electric')">
+            <span class="emergency-icon">⚡</span>
+            <strong>Electric Shock</strong>
+            <br>
+            Emergency Care
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('allergy')">
+            <span class="emergency-icon">🤧</span>
+            <strong>Severe Allergy</strong>
+            <br>
+            Immediate Help
+        </button>
+
+        <button class="emergency-box" onclick="showEmergency('head')">
+            <span class="emergency-icon">🤕</span>
+            <strong>Head Injury</strong>
+            <br>
+            Emergency Care
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SNAKE BITE -->
+    <!-- ============================= -->
+
+    <div id="snake" class="emergency-details">
+
+        <h2>🐍 Snake Bite</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Keep the person calm and still.</li>
+            <li>Keep the affected limb still and supported.</li>
+            <li>Seek emergency medical care immediately.</li>
+            <li>Do not try to catch or handle the snake.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- HEART ATTACK -->
+    <!-- ============================= -->
+
+    <div id="heart" class="emergency-details">
+
+        <h2>❤️ Heart Attack</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Call emergency medical services immediately.</li>
+            <li>Keep the person calm and comfortable.</li>
+            <li>Help them rest while waiting for medical assistance.</li>
+            <li>Stay with the person until help arrives.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- UNCONSCIOUSNESS -->
+    <!-- ============================= -->
+
+    <div id="unconscious" class="emergency-details">
+
+        <h2>😵 Unconsciousness</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Check whether the person responds.</li>
+            <li>Check breathing.</li>
+            <li>Call emergency medical services.</li>
+            <li>Stay with the person until help arrives.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- BREATHING DIFFICULTY -->
+    <!-- ============================= -->
+
+    <div id="breathing" class="emergency-details">
+
+        <h2>🫁 Breathing Difficulty</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Call emergency medical services if breathing is severely difficult.</li>
+            <li>Help the person sit comfortably.</li>
+            <li>Keep the surroundings calm.</li>
+            <li>Stay with the person until help arrives.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SEVERE BLEEDING -->
+    <!-- ============================= -->
+
+    <div id="bleeding" class="emergency-details">
+
+        <h2>🩸 Severe Bleeding</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Call emergency medical services.</li>
+            <li>Apply firm pressure with a clean cloth or dressing.</li>
+            <li>Keep the person calm and still.</li>
+            <li>Seek urgent medical attention.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- BURNS -->
+    <!-- ============================= -->
+
+    <div id="burns" class="emergency-details">
+
+        <h2>🔥 Severe Burns</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move away from the source of the burn if safe.</li>
+            <li>Cool the burn with cool running water.</li>
+            <li>Cover it with a clean, non-stick covering.</li>
+            <li>Seek medical attention for serious burns.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- STROKE -->
+    <!-- ============================= -->
+
+    <div id="stroke" class="emergency-details">
+
+        <h2>🧠 Stroke</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Call emergency medical services immediately.</li>
+            <li>Note when the symptoms started, if known.</li>
+            <li>Keep the person safe and comfortable.</li>
+            <li>Stay with the person until help arrives.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SEIZURE -->
+    <!-- ============================= -->
+
+    <div id="seizure" class="emergency-details">
+
+        <h2>🫨 Seizure</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Move dangerous objects away.</li>
+            <li>Protect the person's head from injury.</li>
+            <li>Stay with the person.</li>
+            <li>Seek emergency help when necessary.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- POISONING -->
+    <!-- ============================= -->
+
+    <div id="poisoning" class="emergency-details">
+
+        <h2>☠️ Poisoning</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Seek emergency medical assistance immediately.</li>
+            <li>Move away from the source if safe.</li>
+            <li>Keep the suspected substance or container for medical professionals if safe.</li>
+            <li>Do not induce vomiting unless instructed by a medical professional.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- ELECTRIC SHOCK -->
+    <!-- ============================= -->
+
+    <div id="electric" class="emergency-details">
+
+        <h2>⚡ Electric Shock</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Switch off the electrical source before approaching if it is safe.</li>
+            <li>Call emergency medical services.</li>
+            <li>Keep the person safe while waiting for help.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- SEVERE ALLERGY -->
+    <!-- ============================= -->
+
+    <div id="allergy" class="emergency-details">
+
+        <h2>🤧 Severe Allergic Reaction</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Call emergency medical services for severe symptoms.</li>
+            <li>Help the person use their prescribed emergency medication if available.</li>
+            <li>Keep the person comfortable while waiting for help.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- HEAD INJURY -->
+    <!-- ============================= -->
+
+    <div id="head" class="emergency-details">
+
+        <h2>🤕 Head Injury</h2>
+
+        <h3>⚠️ Precautions</h3>
+
+        <ul>
+            <li>Keep the person still and safe.</li>
+            <li>Seek urgent medical attention for a serious injury.</li>
+            <li>Monitor the person's condition while waiting for help.</li>
+        </ul>
+
+        <h3>📞 Emergency Contacts</h3>
+
+        <button class="action-button call-button">
+            🚑 Call Ambulance
+        </button>
+
+        <button class="action-button hospital-button">
+            🏥 Contact Hospital
+        </button>
+
+        <h3>📍 Location</h3>
+
+        <button class="action-button location-button"
+                onclick="shareLocation()">
+            📍 Share My Location
+        </button>
+
+        <button class="action-button back-button"
+                onclick="goBack()">
+            ← Back to Medical Emergencies
+        </button>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
+
+    <script>
+
+        function showEmergency(emergencyId) {
+
+            // Hide every emergency detail
+            let details = document.querySelectorAll(".emergency-details");
+
+            details.forEach(function(detail) {
+                detail.classList.remove("active");
+            });
+
+            // Show selected emergency
+            let selectedEmergency =
+                document.getElementById(emergencyId);
+
+            if (selectedEmergency) {
+                selectedEmergency.classList.add("active");
+
+                // Scroll to the selected information
+                selectedEmergency.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        }
+
+
+        function goBack() {
+
+            // Hide all emergency information
+            let details =
+                document.querySelectorAll(".emergency-details");
+
+            details.forEach(function(detail) {
+                detail.classList.remove("active");
+            });
+
+            // Go back to the category boxes
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        function shareLocation() {
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+
+                        let latitude =
+                            position.coords.latitude;
+
+                        let longitude =
+                            position.coords.longitude;
+
+                        let locationURL =
+                            "https://www.google.com/maps?q="
+                            + latitude + "," + longitude;
+
+                        alert(
+                            "Your location is ready to share:\n\n"
+                            + locationURL
+                        );
+
+                    },
+
+                    function() {
+
+                        alert(
+                            "Unable to access your location. "
+                            + "Please allow location permission."
+                        );
+
+                    }
+                );
+
+            } else {
+
+                alert(
+                    "Location sharing is not supported by this browser."
+                );
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
